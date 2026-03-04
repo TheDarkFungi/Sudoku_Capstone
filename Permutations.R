@@ -1,8 +1,10 @@
+#permutationer()
+# Will return a boardID with all instances of the two given colors swapped
 permutationer <- function(boardID, c1, c2){
   if (c1 == c2){
-    stop("Give two different numbers plz")
+    stop("Please give two different numbers")
   }
-  else if (c1 + c2 > 17) {
+  else if (c1 > 9 | c2 > 9 | c1 < 1 | c2 < 1) {
     stop("Only accepts numbers 1-9")
   }
   else {
@@ -12,6 +14,9 @@ permutationer <- function(boardID, c1, c2){
   }
 }
 
+#swapRows()
+# Will return a boardID with the two given rows swapped
+# r1 and r2 should be integers from 1-9, and be in the same "block"
 swapRows <- function(boardID, r1, r2){
   if (floor(r1/3) != floor(r2/3)){
     errorCondition("Rows are in different blocks")
@@ -27,6 +32,9 @@ swapRows <- function(boardID, r1, r2){
   return(outputBoard)
 }
 
+#swapCols()
+# Will return a boardID with the two given columns swapped
+# c1 and c2 should be integers from 1-9, and be in the same "block"
 swapCols <- function(boardID, c1, c2){
   if (floor(c1/3) != floor(c2/3)){
     errorCondition("Cols are in different blocks")
@@ -42,6 +50,9 @@ swapCols <- function(boardID, c1, c2){
   return(outputBoard)
 }
 
+#standardizeNumbers()
+# Returns a board that is logically identical to your input board, but with the
+# colors permuted in a way such that the top left box is in numerical order
 standardizeNumbers <- function(boardID){
   count <- 1
   for (i in c(1,2,3,10,11,12,19,20,21)){
