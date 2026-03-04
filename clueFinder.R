@@ -134,7 +134,7 @@ check4ComponentsNRoC <- function(boardID, option, s1, s2){
 }
 
 check4AllComponents <- function(boardID){
-  outputGrid <- array(rep(0,9*18), dim = c(9,9,2), dimnames = list(c("[1,2]","[1,3]","[2,3]", "[4,5]","[4,6]","[5,6]", "[7,8]","[7,9]","[8,9]"),1:9,c("Row","Col")))
+  outputGrid <- array(rep(0,9*18), dim = c(9,9,2), dimnames = list(c("[1,2]","[1,3]","[2,3]", "[4,5]","[4,6]","[5,6]","[7,8]","[7,9]","[8,9]"),1:9,c("Row","Col")))
                           
   for (b in 0:2){
     for (s1 in 1:2){

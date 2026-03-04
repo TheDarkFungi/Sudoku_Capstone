@@ -34,3 +34,4 @@ layout
 sudoku <- make_sudoku()
 grid <- layout_on_grid(sudoku, width = 9)
 plot(sudoku, layout = grid, edge.curved = 0.3)
+

@@ -100,25 +100,3 @@ generateAllDisCoSubBoard <- function(boardID){
     }
   }
 }
-
-calculateConnectedness <- function(subBoard){
-  tempBoard <- empty_board
-  boardComponents <- components(subBoard)
-  compID <- boardComponents$membership
-  comp_sizes <- boardComponents$csize
-  for (i in 1:vcount(subBoard)){
-    tempBoard[V(subBoard)$ID[i]] <- comp_sizes[compID[i]]/2 -2
-  }
-  return(tempBoard)
-}
-
-aggregateConnectedness <- function(boardID){
-  initBoard <- empty_board
-  for (i in 1:8){
-    for (j in (i+1):9){
-      temp_board <- generateSubBoard(boardID, i, j, FALSE)$board
-      initBoard <- initBoard + calculateConnectedness(temp_board)
-    }
-  }
-  return(initBoard)
-}

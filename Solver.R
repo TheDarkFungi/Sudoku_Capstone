@@ -1,3 +1,14 @@
+# This file is for solving three-colored subgraphs.
+# For two colored subgraphs, determining solvability is as easy as 
+#         "does each component have at least one colored vertex"
+# Having all two-colored subgraphs be solvable is a REQUIREMENT for the entire
+# board be solvable. Therefore, one of my hypothesis was that all three colored
+# subgraphs also needed to be solvable. I wrote these functions to check that.
+# The hypothesis was proven to be false.
+
+#threeColorSolver()
+# Given a three colored subgraph, determines if the graph can be uniquely colored.
+# If plot@ is set to true, it plots every step of its iterations.
 threeColorSolver <- function(subBoardG, plotQ = FALSE){
   #subBoardID is a list(board = sub_board, layout = sub_layout, colors = sub_colors, labels = sub_labels, answerKey = fullBoardID)
   coloredCells <- as.integer(subBoardG$labels)
