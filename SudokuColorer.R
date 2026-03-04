@@ -1,5 +1,14 @@
+#These two variables are used to make the graphs easier to understand.
+#Vertex_colors will change when a new board is loaded, and will be used by plot()
 color_palette <- c("white", "pink", "tomato1", "orange", "yellow", "green", "darkcyan", "turquoise", "cornflowerblue", "mediumpurple1")
 vertex_colors <- character(81)
+
+#load_board()
+# Give it a list of 81 integers, 0-9, and it will set vertex_colors and vertex_labels
+# This way, two different graphs don't need to be stored to plot two different boards
+# All calls of plot() will plot the same board, just with the labels changed
+# Examples of boardIDs can be found in board_examples.R and board_records.R
+# Will not work with subboards
 load_board <- function(boardID){
   for (i in 1:81) {
     cell_value <- boardID[i]
@@ -9,6 +18,9 @@ load_board <- function(boardID){
   vertex_labels[vertex_labels == "0"] <<- ''
 }
 
+#print_loaded_board_val()
+# This is the inverse of load_board
+# Returns a comma-separated representation of the current loaded board
 print_loaded_board_val <- function(){
   outputBoard <- as.integer(vertex_labels)
   outputBoard[is.na(outputBoard)] <- 0
@@ -16,6 +28,9 @@ print_loaded_board_val <- function(){
   return(outputBoard)
 }
 
+#plot_loaded_board()
+# Plots the loaded board with all the correct settings
+# Will not work with subboards.
 plot_loaded_board <- function(){
   plot(
     board, 
@@ -26,6 +41,9 @@ plot_loaded_board <- function(){
   )
 }
 
+#plot_subBoard()
+# The function to be able to plot subboards
+# Designed to take the output of either generateSubBoard() or generateSubBoardN()
 plot_subBoard <- function(subBoard){
   #subBoard is a list(board = sub_board, layout = sub_layout, colors = sub_colors, labels = sub_labels, answerKey = fullBoardID)
   plot(
